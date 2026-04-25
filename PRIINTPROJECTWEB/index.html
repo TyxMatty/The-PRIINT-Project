@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O projeto PRIINT</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logotipo do projeto PRIINT">
+        </div>
+
+        <nav aria-label="Menu principal">
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-controls">
+            <div class="langbutton" aria-label="Seleção de idioma">
+                <button onclick="changeLanguage('pt')" aria-label="Mudar idioma para Português">PT</button>
+                <button onclick="changeLanguage('en')" aria-label="Switch language to English">EN</button>
+            </div>
+            <button class="a11y-toggle-btn" onclick="openA11yModal()" aria-label="Abrir opções de acessibilidade">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="app">
+        
+        <div id="step-accessibility" class="modal-overlay" style="display: flex;">
+            <div class="modal-content relative-box">
+                <button class="close-modal-btn" onclick="closeA11yModal()" aria-label="Fechar configurações">✖</button>
+                <svg aria-hidden="true" style="width: 4rem; height: 4rem; margin-bottom: 1rem; color: var(--text-color);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+
+                <h2 id="a11y-title">Personalize a sua interface</h2>
+                <p>Como prefere visualizar a plataforma para o seu conforto?</p>
+        
+                <div class="btn-group" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <button onclick="setTheme('default')" aria-label="Restaurar visual padrão">Visual Padrão PRIINT</button>
+                    <button onclick="setTheme('high-contrast')" aria-label="Aplicar Alto Contraste">Alto Contraste</button>
+                    <button onclick="setTheme('low-stimulus')" aria-label="Aplicar Cores Suaves">Cores Suaves</button>
+                    <button id="btn-tts" onclick="enableTTS()" aria-label="Ativar Leitor de Ecrã por voz">Ativar Voz (TTS)</button>
+                </div>
+        
+                <button class="primary-btn" onclick="closeA11yModal()" aria-label="Salvar e fechar">Salvar e Continuar</button>
+            </div>
+        </div> <section id="homepage-content">
+            
+            <div class="hero-section">
+                <div class="hero-badge">Acessibilidade & IA 🚀</div>
+                <h1 class="hero-title">O projeto <span>PRIINT</span></h1>
+                <p class="hero-subtitle">Plataforma de Reconhecimento e Integração de Inteligências Neurodivergentes e Típicas.</p>
+                <p class="hero-text">Construímos jornadas de aprendizado que se moldam ao seu cérebro, não o contrário. Descubra como nossa IA adapta o conhecimento para o seu foco.</p>
+                
+                <div class="hero-actions">
+                    <button class="primary-btn glow-effect" onclick="goToQuestionnaire()">Iniciar Mapeamento</button>
+                    <a href="#sobre" class="secondary-btn">Conheça o Sistema</a>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                
+                <section id="sobre" class="glass-card">
+                    <div class="card-icon">🧠</div>
+                    <h2>Sobre o Projeto</h2>
+                    <p>O PRIINT nasceu da necessidade de quebrar o modelo educacional padrão. Através de um mapeamento cognitivo gamificado, nossa arquitetura adapta formatos, cores e ritmos de estudo para maximizar sua retenção de forma nativa.</p>
+                </section>
+
+                <section id="equipe" class="glass-card">
+                    <div class="card-icon">💻</div>
+                    <h2>Nossa Equipe</h2>
+                    <p>Unimos metodologias ágeis e engenharia de software para construir interfaces focadas no usuário. Nossa missão é revolucionar a absorção de conhecimento usando tecnologia e design inclusivo de alto padrão.</p>
+                    <p>Nossa equipe inclue dois Neurodivergentes até agora, com planos de aumentar a diversidade de nosso projeto sempre que possível.</p>
+                </section>
+
+                <section id="contato" class="glass-card">
+                    <div class="card-icon">✉️</div>
+                    <h2>Nos Contate</h2>
+                    <p>Interessado em levar a tecnologia PRIINT para a sua instituição ou ser um desenvolvedor parceiro?</p>
+                    <button class="contact-btn">Enviar Mensagem</button>
+                </section>
+
+            </div>
+        </section>
+
+<section id="step-questionnaire" aria-labelledby="form-title" style="display: none;">
+            <h2 id="form-title" style="text-align: center; margin-bottom: 3rem;">Mapeamento de Foco e Retenção</h2>
+            
+            <form id="assessment-form">
+                <fieldset class="question-card active"> 
+                    <legend>1. Consigo manter a concentração ao ler textos longos sem interrupções.</legend>
+                    <div class="scale-1-to-10" data-question="q1" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>2. A minha aprendizagem melhora quando o conteúdo é dividido em blocos pequenos.</legend>
+                    <div class="scale-1-to-10" data-question="q2" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>3. Sinto necessidade de fazer pausas frequentes (a cada 15-20 min) para manter o foco.</legend>
+                    <div class="scale-1-to-10" data-question="q3" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+  
+                <fieldset class="question-card">
+                    <legend>4. Distraio-me facilmente com muitos elementos visuais, cores ou ícones na tela.</legend>
+                    <div class="scale-1-to-10" data-question="q4" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>5. Prefiro ouvir uma explicação em áudio do que ler o mesmo conteúdo em texto.</legend>
+                    <div class="scale-1-to-10" data-question="q5" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>6. Tenho dificuldade em organizar por onde começar a estudar um tema novo.</legend>
+                    <div class="scale-1-to-10" data-question="q6" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>7. Entendo melhor o conteúdo quando ele é apresentado em tópicos e listas em vez de parágrafos.</legend>
+                    <div class="scale-1-to-10" data-question="q7" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>8. Sinto cansaço visual rápido ao ler em telas com fundo muito claro ou muito brilhante.</legend>
+                    <div class="scale-1-to-10" data-question="q8" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>9. Consigo lembrar facilmente do que estudei no dia anterior sem precisar de revisão.</legend>
+                    <div class="scale-1-to-10" data-question="q9" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <fieldset class="question-card">
+                    <legend>10. Imagens, diagramas e vídeos são essenciais para eu entender conceitos complexos.</legend>
+                    <div class="scale-1-to-10" data-question="q10" role="group" aria-label="Escala de 1 a 10"></div>
+                </fieldset>
+
+                <div id="final-submit-container" style="display: none; text-align: center; margin-top: 3rem;">
+                    <button class="primary-btn" onclick="submitToAI(event)">Finalizar Mapeamento e Gerar Estudo</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="auth-modal" class="modal-overlay">
+            <div class="modal-content relative-box">
+                <h2>Seu perfil está pronto! 🚀</h2>
+                <p>Crie uma conta rápida para salvar seu mapeamento cognitivo e gerar seu plano de estudos.</p>
+                <form id="auth-form" onsubmit="finalizeRegistration(event)">
+                    <input type="text" placeholder="Como prefere ser chamado?" aria-label="Nome">
+                    <input type="email" placeholder="Seu melhor e-mail" required aria-label="Email">
+                    <input type="password" placeholder="Crie uma senha" required aria-label="Senha">
+                    <input type="text" placeholder="Qual a sua identidade de gênero?" aria-label="Identidade de Gênero" autocomplete="gender">
+                    <button type="submit" class="primary-btn" style="width: 100%;">Salvar Meu Perfil e Entrar</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <script src="homepage.js" defer></script>
+</body>
+</html>
