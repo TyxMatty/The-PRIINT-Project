@@ -95,8 +95,8 @@ async function submitToAI(event: Event) {
     event.preventDefault();
 
     const answeredCount = Object.keys(userProfile).length;
-    // Adaptado para 3 perguntas nesta versão
-    if (answeredCount < 3) {
+    
+    if (answeredCount < 10) {
         alert(`Você respondeu apenas ${answeredCount} perguntas. Por favor, volte e preencha todas.`);
         return; 
     }
