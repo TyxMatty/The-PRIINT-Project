@@ -1,5 +1,5 @@
 /* =========================================
-   1. VARIÁVEIS DE TEMA (Global State)
+   1. VARIÁVEIS DE TEMA
 ========================================= */
 :root {
     --bg-gradient: linear-gradient(135deg, #19245b 0%, #202c64 25%, #223176 50%, #2a3880 75%, #3e6db4 100%);
