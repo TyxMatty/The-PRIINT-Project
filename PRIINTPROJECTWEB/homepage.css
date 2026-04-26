@@ -344,7 +344,7 @@ legend {
 
 .hero-title span {
     color: var(--primary-color);
-    text-shadow: 0 0 20px rgba(210, 129, 55, 0.5); /* Efeito neon sutil */
+    text-shadow: 0 0 20px rgba(210, 129, 55, 0.5); 
 }
 
 .hero-subtitle {
@@ -392,8 +392,6 @@ legend {
     border-bottom: 2px solid var(--primary-color);
     color: #ffffff;
 }
-
-/* Grid de Conteúdo (Sobre, Equipe, Contato) */
 .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -403,7 +401,6 @@ legend {
     margin: 0 auto;
 }
 
-/* Glassmorphism Cards */
 .glass-card {
     background: rgba(25, 36, 91, 0.4);
     backdrop-filter: blur(10px);
@@ -450,7 +447,6 @@ legend {
     color: #19245b;
 }
 
-/* Ajuste Responsivo para telas menores */
 @media (max-width: 768px) {
     .hero-title { font-size: 3rem; }
     .hero-actions { flex-direction: column; }
@@ -459,7 +455,7 @@ legend {
    9. SCROLL ANIMATIONS E NOVAS SEÇÕES
 ========================================= */
 
-/* Classes de Animação Oculta e Revelada */
+
 .fade-in {
     opacity: 0;
     transform: translateY(40px);
@@ -486,23 +482,23 @@ legend {
     padding-bottom: 3rem;
 }
 
-/* Container que atua como um "Tubo Central" inflexível */
+
 .steps-container {
     display: flex;
     flex-direction: column;
     gap: 3rem; 
     
-    /* A MÁGICA DA CONTENÇÃO: */
+   
     width: 100%;
-    max-width: 1000px; /* O tubo NUNCA passará desse tamanho */
-    margin: 0 auto 4rem auto; /* Centraliza o tubo na tela */
-    padding: 0 1rem; /* Dá um respiro para telas de celular */
+    max-width: 1000px; 
+    margin: 0 auto 4rem auto; 
+    padding: 0 1rem; 
     box-sizing: border-box;
 }
 
-/* A Base da "Gaveta" */
+
 .step-item {
-    width: 80%; /* Ocupa 80% do TUBO, e não da tela */
+    width: 80%;
     background: rgba(32, 44, 100, 0.4);
     backdrop-filter: blur(8px);
     border: 2px solid var(--primary-color);
@@ -515,27 +511,26 @@ legend {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* ÍMPARES (Passos 1 e 3) - Colados na ESQUERDA do tubo */
+
 .step-item:nth-child(odd) {
-    align-self: flex-start; /* Fica na esquerda dos 1000px */
+    align-self: flex-start; 
     border-radius: 0 50px 50px 0; 
     border-left: none; 
-    margin-left: 0; /* Zero margem negativa */
+    margin-left: 0; 
     align-items: flex-start; 
     text-align: left;
 }
 
-/* PARES (Passo 2) - Colados na DIREITA do tubo */
+
 .step-item:nth-child(even) {
-    align-self: flex-end; /* Fica na direita dos 1000px */
+    align-self: flex-end; 
     border-radius: 50px 0 0 50px; 
     border-right: none; 
-    margin-right: 0; /* Zero margem negativa */
+    margin-right: 0; 
     align-items: flex-end; 
     text-align: right;
 }
 
-/* Efeito suave ao passar o mouse */
 .step-item:hover {
     transform: scale(1.02);
     box-shadow: 0 0 30px rgba(255, 189, 89, 0.4);
@@ -551,7 +546,6 @@ legend {
     line-height: 1.6;
 }
 
-/* O Efeito Marca Texto */
 .marca-texto {
     display: inline-block;
     font-size: 1.5rem;
@@ -572,7 +566,6 @@ legend {
     line-height: 1.8;
 }
 
-/* Seção de Contato Final */
 .contact-section {
     padding: 6rem 1rem 4rem 1rem;
     text-align: center;
