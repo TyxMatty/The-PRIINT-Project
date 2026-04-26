@@ -1,5 +1,5 @@
 /* =========================================
-   1. VARIÁVEIS DE TEMA
+   1. VARIÁVEIS DE TEMA (Global State)
 ========================================= */
 :root {
     --bg-gradient: linear-gradient(135deg, #19245b 0%, #202c64 25%, #223176 50%, #2a3880 75%, #3e6db4 100%);
@@ -30,20 +30,29 @@ body.low-stimulus {
 }
 
 /* =========================================
-   2. BASE
+   2. BASE E LAYOUT GERAL
 ========================================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    overflow-x: hidden; 
+}
 
 body {
-    margin: 0; padding: 0; 
+    margin: 0; 
+    padding: 0; 
     background: var(--bg-color-fallback);
     background: var(--bg-gradient); 
     color: var(--text-color);
     font-family: var(--font-base);
     line-height: 1.6;
     min-height: 100vh; 
-    overflow-x: hidden; /* MATA O SCROLL HORIZONTAL */
+    overflow-x: hidden; 
     width: 100%;
 }
 
@@ -55,7 +64,7 @@ body {
 }
 
 /* =========================================
-   3. HEADER
+   3. CABEÇALHO (HEADER) E NAVEGAÇÃO
 ========================================= */
 header {
     display: flex;
@@ -65,21 +74,95 @@ header {
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 1rem;
 }
-.logo img { max-width: 150px; height: auto; }
-nav ul { display: flex; list-style: none; gap: 2rem; }
-nav a { color: var(--text-color); text-decoration: none; font-weight: bold; text-transform: uppercase; transition: color 0.3s ease; }
-nav a:hover { color: #ffffff; }
-.header-controls { display: flex; align-items: center; gap: 1rem; }
+
+.logo img { 
+    max-width: 150px; 
+    height: auto; 
+}
+
+nav ul { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+}
+
+nav a { 
+    color: var(--text-color); 
+    text-decoration: none; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    transition: color 0.3s ease; 
+}
+
+nav a:hover { 
+    color: #ffffff; 
+}
+
+.header-controls { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+}
 
 /* =========================================
-   4. BOTÕES
+   4. BOTÕES GERAIS E CONTROLES
 ========================================= */
-button { background-color: var(--button-bg); color: var(--button-text); border: 2px solid transparent; padding: 0.8rem 1.5rem; margin: 0.5rem; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: transform 0.2s, background-color 0.3s; }
-button:hover, button:focus { transform: scale(1.05); border-color: var(--primary-color); outline: none; }
-.primary-btn { background-color: var(--primary-color); color: #19245b; padding: 1rem 2rem; font-size: 1.2rem; border-radius: 50px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(210, 129, 55, 0.4); border: none; }
-.primary-btn:hover { background-color: var(--text-color); color: #000; border-color: transparent; }
+button { 
+    background-color: var(--button-bg); 
+    color: var(--button-text); 
+    border: 2px solid transparent; 
+    padding: 0.8rem 1.5rem; 
+    margin: 0.5rem; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition: transform 0.2s, background-color 0.3s; 
+}
 
-.a11y-toggle-btn { background-color: var(--primary-color); color: #19245b; border-radius: 50%; width: 50px; height: 50px; min-width: 50px; font-size: 1.5rem; display: flex; justify-content: center; align-items: center; padding: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+button:hover, 
+button:focus { 
+    transform: scale(1.05); 
+    border-color: var(--primary-color); 
+    outline: none; 
+}
+
+.primary-btn { 
+    background-color: var(--primary-color); 
+    color: #19245b; 
+    padding: 1rem 2rem; 
+    font-size: 1.2rem; 
+    border-radius: 50px; 
+    text-transform: uppercase; 
+    box-shadow: 0 4px 15px rgba(210, 129, 55, 0.4); 
+    border: none; 
+}
+
+.primary-btn:hover { 
+    background-color: var(--text-color); 
+    color: #000; 
+    border-color: transparent; 
+}
+
+.a11y-toggle-btn { 
+    background-color: var(--primary-color); 
+    color: #19245b; 
+    border-radius: 50%; 
+    width: 50px; 
+    height: 50px; 
+    min-width: 50px; 
+    font-size: 1.5rem; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 0; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+}
+
+.a11y-toggle-btn:hover { 
+    background-color: var(--text-color); 
+    transform: scale(1.1); 
+}
 
 .clean-flag-btn {
     background: transparent;
@@ -100,64 +183,293 @@ button:hover, button:focus { transform: scale(1.05); border-color: var(--primary
     background: transparent;
     border-color: transparent;
 }
-.a11y-toggle-btn:hover { background-color: var(--text-color); transform: scale(1.1); }
 
 /* =========================================
-   5. MODAIS & UI COMPONENTS
+   5. MODAIS E FORMULÁRIOS
 ========================================= */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
-.modal-content { background: rgba(25, 36, 91, 0.95); padding: 3rem; border-radius: 16px; border: 2px solid var(--primary-color); max-width: 500px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.relative-box { position: relative; }
-.close-modal-btn { position: absolute; top: 10px; right: 15px; background: transparent; color: var(--text-color); border: none; font-size: 1.5rem; padding: 0; margin: 0; }
-.close-modal-btn:hover { color: #fff; background: transparent; transform: scale(1.2); }
-.modal-content h2 { color: var(--text-color); margin-bottom: 1rem; font-size: 2rem; }
-.modal-content p { margin-bottom: 2rem; font-size: 1.1rem; }
-.modal-content input { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid var(--primary-color); border-radius: 6px; background-color: rgba(0, 0, 0, 0.3); color: var(--text-color); font-size: 1rem; }
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    z-index: 2000; 
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(8px); 
+}
+
+.modal-content { 
+    background: rgba(25, 36, 91, 0.95); 
+    padding: 3rem; 
+    border-radius: 16px; 
+    border: 2px solid var(--primary-color); 
+    max-width: 500px; 
+    width: 90%; 
+    text-align: center; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+}
+
+.relative-box { 
+    position: relative; 
+}
+
+.close-modal-btn { 
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    background: transparent; 
+    color: var(--text-color); 
+    border: none; 
+    font-size: 1.5rem; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.close-modal-btn:hover { 
+    color: #fff; 
+    background: transparent; 
+    transform: scale(1.2); 
+}
+
+.modal-content h2 { 
+    color: var(--text-color); 
+    margin-bottom: 1rem; 
+    font-size: 2rem; 
+}
+
+.modal-content p { 
+    margin-bottom: 2rem; 
+    font-size: 1.1rem; 
+}
+
+.modal-content input { 
+    width: 100%; 
+    padding: 1rem; 
+    margin-bottom: 1rem; 
+    border: 1px solid var(--primary-color); 
+    border-radius: 6px; 
+    background-color: rgba(0, 0, 0, 0.3); 
+    color: var(--text-color); 
+    font-size: 1rem; 
+}
 
 /* =========================================
-   7. QUESTIONÁRIO E ESCALAS
+   6. QUESTIONÁRIO E ESCALAS DE NOTAS
 ========================================= */
-fieldset { border: none; margin-bottom: 3rem; padding: 1.5rem; background-color: rgba(32, 44, 100, 0.4); border-radius: 12px; }
-legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(--text-color); background-color: var(--bg-color-fallback); border: 2px solid var(--primary-color); padding: 0.5rem 1rem; border-radius: 8px; }
-.question-card { display: none; opacity: 0; transition: opacity 0.5s ease; text-align: center; }
-.question-card.active { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh; opacity: 1; }
-.question-card legend { font-size: 2.5rem; margin-bottom: 3rem; max-width: 800px; text-align: center; line-height: 1.3; }
+fieldset { 
+    border: none; 
+    margin-bottom: 3rem; 
+    padding: 1.5rem; 
+    background-color: rgba(32, 44, 100, 0.4); 
+    border-radius: 12px; 
+}
 
-.scale-1-to-10 { display: flex; justify-content: center; gap: 3rem; width: 100%; position: relative; padding-top: 20px; flex-wrap: wrap;}
-.scale-btn { position: relative; z-index: 1; width: 40px; height: 40px; min-width: 40px; padding: 0; border-radius: 50%; background-color: var(--bg-color-fallback); border: 2px solid var(--primary-color); color: transparent; cursor: pointer; transition: all 0.2s ease; }
-.scale-btn::after { content: attr(data-val); position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--text-color); font-size: 1rem; font-weight: bold; }
-.scale-btn:hover { transform: scale(1.2); background-color: var(--button-bg); }
-.scale-btn.selected { background-color: var(--text-color); border-color: var(--text-color); box-shadow: 0 0 15px var(--text-color); transform: scale(1.3); }
+legend { 
+    font-weight: bold; 
+    margin-bottom: 2rem; 
+    font-size: 1.2rem; 
+    color: var(--text-color); 
+    background-color: var(--bg-color-fallback); 
+    border: 2px solid var(--primary-color); 
+    padding: 0.5rem 1rem; 
+    border-radius: 8px; 
+}
 
-.scale-labels { margin-top: 1.5rem; display: flex; justify-content: space-between; width: 100%; max-width: 500px; font-weight: bold; color: var(--text-color); font-size: 1.1rem; }
+.question-card { 
+    display: none; 
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+    text-align: center; 
+}
+
+.question-card.active { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 40vh; 
+    opacity: 1; 
+}
+
+.question-card legend { 
+    font-size: 2.5rem; 
+    margin-bottom: 3rem; 
+    max-width: 800px; 
+    text-align: center; 
+    line-height: 1.3; 
+}
+
+.scale-1-to-10 { 
+    display: flex; 
+    justify-content: center; 
+    gap: 3rem; 
+    width: 100%; 
+    position: relative; 
+    padding-top: 20px; 
+    flex-wrap: wrap;
+}
+
+.scale-btn { 
+    position: relative; 
+    z-index: 1; 
+    width: 40px; 
+    height: 40px; 
+    min-width: 40px; 
+    padding: 0; 
+    border-radius: 50%; 
+    background-color: var(--bg-color-fallback); 
+    border: 2px solid var(--primary-color); 
+    color: transparent; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+
+.scale-btn::after { 
+    content: attr(data-val); 
+    position: absolute; 
+    top: -28px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: var(--text-color); 
+    font-size: 1rem; 
+    font-weight: bold; 
+}
+
+.scale-btn:hover { 
+    transform: scale(1.2); 
+    background-color: var(--button-bg); 
+}
+
+.scale-btn.selected { 
+    background-color: var(--text-color); 
+    border-color: var(--text-color); 
+    box-shadow: 0 0 15px var(--text-color); 
+    transform: scale(1.3); 
+}
+
+.scale-labels { 
+    margin-top: 1.5rem; 
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+    max-width: 500px; 
+    font-weight: bold; 
+    color: var(--text-color); 
+    font-size: 1.1rem; 
+}
 
 /* =========================================
-   8. HERO E CARDS
+   7. HERO SECTION E CARDS DE INFORMAÇÃO
 ========================================= */
-.hero-section { text-align: center; padding: 6rem 1rem 4rem 1rem; max-width: 900px; margin: 0 auto; position: relative; }
-.hero-badge { display: inline-block; background-color: rgba(255, 189, 89, 0.15); color: var(--text-color); padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: bold; margin-bottom: 1.5rem; border: 1px solid rgba(255, 189, 89, 0.3); }
-.hero-title { font-size: 4.5rem; font-weight: 800; margin-bottom: 1rem; color: #ffffff; }
-.hero-title span { color: var(--primary-color); text-shadow: 0 0 20px rgba(210, 129, 55, 0.5); }
-.hero-subtitle { font-size: 1.4rem; color: var(--text-color); margin-bottom: 1.5rem; }
-.hero-text { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto 3rem auto; }
-.hero-actions { display: flex; justify-content: center; gap: 1.5rem; align-items: center; }
-.glow-effect { box-shadow: 0 0 20px rgba(210, 129, 55, 0.4); transition: all 0.3s ease; }
-.glow-effect:hover { box-shadow: 0 0 30px rgba(210, 129, 55, 0.8); transform: translateY(-3px); }
-.secondary-btn { color: var(--text-color); font-weight: bold; border-bottom: 2px solid transparent; transition: all 0.3s ease; padding-bottom: 2px; text-decoration: none;}
-.secondary-btn:hover { border-bottom: 2px solid var(--primary-color); color: #ffffff; }
+.hero-section { 
+    text-align: center; 
+    padding: 6rem 1rem 4rem 1rem; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    position: relative; 
+}
 
-.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 2rem 0; }
-.glass-card { background: rgba(25, 36, 91, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(255, 189, 89, 0.1); border-radius: 16px; padding: 2.5rem 2rem; text-align: left; transition: transform 0.3s ease; }
-.glass-card:hover { transform: translateY(-8px); border-color: rgba(255, 189, 89, 0.4); }
+.hero-badge { 
+    display: inline-block; 
+    background-color: rgba(255, 189, 89, 0.15); 
+    color: var(--text-color); 
+    padding: 0.5rem 1.2rem; 
+    border-radius: 20px; 
+    font-weight: bold; 
+    margin-bottom: 1.5rem; 
+    border: 1px solid rgba(255, 189, 89, 0.3); 
+}
+
+.hero-title { 
+    font-size: 4.5rem; 
+    font-weight: 800; 
+    margin-bottom: 1rem; 
+    color: #ffffff; 
+}
+
+.hero-title span { 
+    color: var(--primary-color); 
+    text-shadow: 0 0 20px rgba(210, 129, 55, 0.5); 
+}
+
+.hero-subtitle { 
+    font-size: 1.4rem; 
+    color: var(--text-color); 
+    margin-bottom: 1.5rem; 
+}
+
+.hero-text { 
+    font-size: 1.1rem; 
+    color: rgba(255, 255, 255, 0.8); 
+    max-width: 600px; 
+    margin: 0 auto 3rem auto; 
+}
+
+.hero-actions { 
+    display: flex; 
+    justify-content: center; 
+    gap: 1.5rem; 
+    align-items: center; 
+}
+
+.glow-effect { 
+    box-shadow: 0 0 20px rgba(210, 129, 55, 0.4); 
+    transition: all 0.3s ease; 
+}
+
+.glow-effect:hover { 
+    box-shadow: 0 0 30px rgba(210, 129, 55, 0.8); 
+    transform: translateY(-3px); 
+}
+
+.secondary-btn { 
+    color: var(--text-color); 
+    font-weight: bold; 
+    border-bottom: 2px solid transparent; 
+    transition: all 0.3s ease; 
+    padding-bottom: 2px; 
+    text-decoration: none;
+}
+
+.secondary-btn:hover { 
+    border-bottom: 2px solid var(--primary-color); 
+    color: #ffffff; 
+}
+
+.content-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2rem; 
+    padding: 2rem 0; 
+}
+
+.glass-card { 
+    background: rgba(25, 36, 91, 0.4); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 189, 89, 0.1); 
+    border-radius: 16px; 
+    padding: 2.5rem 2rem; 
+    text-align: left; 
+    transition: transform 0.3s ease; 
+}
+
+.glass-card:hover { 
+    transform: translateY(-8px); 
+    border-color: rgba(255, 189, 89, 0.4); 
+}
 
 /* =========================================
-   9. SCROLL ANIMATIONS E COMO FUNCIONA 
+   8. COMO FUNCIONA E ANIMAÇÕES
 ========================================= */
 .fade-in { 
     opacity: 0; 
     transform: translateY(40px); 
     transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 }
+
 .fade-in.visible { 
     opacity: 1; 
     transform: translateY(0); 
@@ -171,7 +483,6 @@ legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(-
     text-align: center; 
 }
 
-/* LAYOUT SIMPLIFICADO: Cards Grandes e Centralizados */
 .steps-wrapper { 
     display: flex; 
     flex-direction: column; 
@@ -236,24 +547,60 @@ legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(-
 }
 
 /* =========================================
-   10. MOBILE FIXES 
+   9. RESPONSIVIDADE (MOBILE FIXES)
 ========================================= */
 @media (max-width: 900px) {
-    /* HEADER E NAV */
-    header { flex-direction: column; gap: 1.5rem; text-align: center; padding-top: 1rem; }
-    nav ul { flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 0; }
-    .header-controls { flex-direction: row; justify-content: center; width: 100%; gap: 1rem; }
+    header { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        text-align: center; 
+        padding-top: 1rem; 
+    }
     
-    /* HERO AJUSTES */
-    .hero-title { font-size: 2.8rem; }
-    .hero-actions { flex-direction: column; width: 100%; }
-    .hero-actions button, .hero-actions a { width: 100%; text-align: center; }
+    nav ul { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 1.5rem; 
+        padding: 0; 
+    }
     
-    /* GAVETAS 
-    .step-item { padding: 2.5rem 1.5rem; }
+    .header-controls { 
+        flex-direction: row; 
+        justify-content: center; 
+        width: 100%; 
+        gap: 1rem; 
+    }
     
-    /* QUESTIONÁRIO */
-    .question-card legend { font-size: 1.8rem; }
-    .scale-1-to-10 { gap: 0.8rem; }
-    .scale-btn { width: 32px; height: 32px; min-width: 32px; }
+    .hero-title { 
+        font-size: 2.8rem; 
+    }
+    
+    .hero-actions { 
+        flex-direction: column; 
+        width: 100%; 
+    }
+    
+    .hero-actions button, 
+    .hero-actions a { 
+        width: 100%; 
+        text-align: center; 
+    }
+    
+    .step-item { 
+        padding: 2.5rem 1.5rem; 
+    }
+    
+    .question-card legend { 
+        font-size: 1.8rem; 
+    }
+    
+    .scale-1-to-10 { 
+        gap: 0.8rem; 
+    }
+    
+    .scale-btn { 
+        width: 32px; 
+        height: 32px; 
+        min-width: 32px; 
+    }
 }
