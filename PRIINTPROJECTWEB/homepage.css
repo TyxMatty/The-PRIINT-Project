@@ -151,7 +151,7 @@ legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(-
 .glass-card:hover { transform: translateY(-8px); border-color: rgba(255, 189, 89, 0.4); }
 
 /* =========================================
-   9. SCROLL ANIMATIONS E COMO FUNCIONA (Simplificado)
+   9. SCROLL ANIMATIONS E COMO FUNCIONA 
 ========================================= */
 .fade-in { 
     opacity: 0; 
@@ -236,7 +236,7 @@ legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(-
 }
 
 /* =========================================
-   10. MOBILE FIXES (Limpo e Direto)
+   10. MOBILE FIXES 
 ========================================= */
 @media (max-width: 900px) {
     /* HEADER E NAV */
@@ -249,7 +249,7 @@ legend { font-weight: bold; margin-bottom: 2rem; font-size: 1.2rem; color: var(-
     .hero-actions { flex-direction: column; width: 100%; }
     .hero-actions button, .hero-actions a { width: 100%; text-align: center; }
     
-    /* GAVETAS (Apenas ajusta o padding pro celular) */
+    /* GAVETAS 
     .step-item { padding: 2.5rem 1.5rem; }
     
     /* QUESTIONÁRIO */
