@@ -165,13 +165,11 @@ function attachHoverTTS() {
 // ==========================================
 // 4. LÓGICA DE INTERFACE, FUGAS E QUESTIONÁRIO
 // ==========================================
-// Função Mestra para Resetar o App (Fuga do Questionário ou Fechar Modal)
 function resetApp() {
     const homepageContent = document.getElementById('homepage-content');
     const questionnaireSection = document.getElementById('step-questionnaire');
     const authModal = document.getElementById('auth-modal');
     const submitContainer = document.getElementById('final-submit-container');
-    // Restaura as visibilidades
     if (homepageContent)
         homepageContent.style.display = 'block';
     if (questionnaireSection)
@@ -180,12 +178,9 @@ function resetApp() {
         authModal.style.display = 'none';
     if (submitContainer)
         submitContainer.style.display = 'none';
-    // Limpa a memória das respostas
     for (let key in userProfile)
         delete userProfile[key];
-    // Reseta visualmente as bolinhas
     document.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('selected'));
-    // Reseta os cards para a primeira pergunta
     const cards = document.querySelectorAll('.question-card');
     cards.forEach((card, index) => {
         if (index === 0)
@@ -193,7 +188,6 @@ function resetApp() {
         else
             card.classList.remove('active');
     });
-    // Restaura o botão de Enviar Mapeamento
     const submitBtn = document.querySelector('#final-submit-container .primary-btn');
     if (submitBtn) {
         submitBtn.disabled = false;
@@ -201,24 +195,18 @@ function resetApp() {
         submitBtn.style.backgroundColor = "var(--primary-color)";
         submitBtn.style.color = "#19245b";
     }
-    // Limpa o formulário de login se tiver algo escrito
     const authForm = document.getElementById('auth-form');
     if (authForm)
         authForm.reset();
-    // Se o TTS estava falando a pergunta, cala a boca
     if (ttsEnabled)
         window.speechSynthesis.cancel();
 }
-// Função que intercepta cliques no Header
 function handleHomeNavigation(event, targetId) {
     const questionnaireSection = document.getElementById('step-questionnaire');
-    // Se o usuário clicou no header MAS está dentro do questionário
     if (questionnaireSection && questionnaireSection.style.display !== 'none') {
-        event.preventDefault(); // Impede o clique normal
-        // Pergunta se ele quer mesmo perder os dados
+        event.preventDefault();
         if (confirm(translations.warningExit[currentLang])) {
             resetApp();
-            // Depois de resetar, leva ele para onde ele queria ir
             if (targetId !== 'top') {
                 setTimeout(() => {
                     const target = document.getElementById(targetId);
@@ -232,7 +220,6 @@ function handleHomeNavigation(event, targetId) {
         }
     }
     else {
-        // Se já estiver na homepage, apenas rola para o topo se clicar na logo
         if (targetId === 'top') {
             event.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -363,7 +350,6 @@ function finalizeRegistration(event) {
     setTimeout(() => {
         const msg = currentLang === 'pt' ? "Conta criada com sucesso!" : "Account created successfully!";
         alert(msg);
-        // Chama o ResetApp para fechar a tela e voltar o usuário para a Home após concluir!
         resetApp();
     }, 1500);
 }
@@ -388,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     attachHoverTTS();
 });
-// Vincula todas as funções globais para que o HTML consiga enxergá-las sem problemas
 window.toggleLanguage = toggleLanguage;
 window.enableTTS = enableTTS;
 window.goToQuestionnaire = goToQuestionnaire;
