@@ -226,7 +226,6 @@ const translations = {
 let currentLang = 'pt';
 function changeLanguage(lang) {
     currentLang = lang;
-    // Função auxiliar de texto
     const setTxt = (selector, text) => {
         const el = document.querySelector(selector);
         if (el)
