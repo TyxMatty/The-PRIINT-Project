@@ -188,7 +188,7 @@ button:focus {
    5. MODAIS E FORMULÁRIOS
 ========================================= */
 .modal-overlay { 
-    display: none; 
+    display: flex; 
     position: fixed; 
     top: 0; 
     left: 0; 
@@ -199,8 +199,14 @@ button:focus {
     justify-content: center; 
     align-items: center; 
     backdrop-filter: blur(8px); 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
-
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
 .modal-content { 
     background: rgba(25, 36, 91, 0.95); 
     padding: 3rem; 
