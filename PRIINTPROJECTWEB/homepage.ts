@@ -173,7 +173,7 @@ function resetApp() {
 
     if (homepageContent) homepageContent.style.display = 'block';
     if (questionnaireSection) questionnaireSection.style.display = 'none';
-    if (authModal) authModal.style.display = 'none';
+    if (authModal) authModal.classList.remove('show');
     if (submitContainer) submitContainer.style.display = 'none';
 
     for (let key in userProfile) delete userProfile[key];
@@ -228,17 +228,19 @@ function handleHomeNavigation(event: Event, targetId: string) {
 
 function openA11yModal() {
     const modal = document.getElementById('step-accessibility');
-    if (modal) modal.style.display = 'flex';
+    if (modal) modal.classList.add('show');
 }
 
 function closeA11yModal() {
     const modal = document.getElementById('step-accessibility');
-    if (modal) modal.style.display = 'none';
+    if (modal) modal.classList.remove('show');
+    localStorage.setItem("a11yConfigured", "true");
 }
 
 function setTheme(theme: string) {
     document.body.classList.remove('high-contrast', 'low-stimulus');
     if (theme !== 'default') document.body.classList.add(theme);
+    localStorage.setItem("theme", theme);
 }
 
 function goToQuestionnaire() {
@@ -337,7 +339,7 @@ async function submitToAI(event: Event) {
             console.log('✅ Perfil Cognitivo enviado com sucesso:', payload);
             
             if (modal) {
-                modal.style.display = 'flex'; 
+                modal.classList.add('show'); 
                 speakText(translations.authTitle[currentLang]);
             }
         }, 1500);
@@ -378,10 +380,17 @@ function initScrollAnimations() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
-    openA11yModal(); 
+    const savedTheme = localStorage.getItem("theme") || 'default';
+    setTheme(savedTheme);
+
     generateScaleButtons(); 
     initScrollAnimations();
     attachHoverTTS(); 
+    if (!localStorage.getItem("a11yConfigured")) {
+        setTimeout(() => {
+            openA11yModal();
+        }, 500); 
+    }
 });
 
 (window as any).toggleLanguage = toggleLanguage;
